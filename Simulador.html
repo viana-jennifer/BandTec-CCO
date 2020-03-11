@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+    <link rel="icon" href="grafico_icone.png">
+</head>
+<body>
+    <center>
+        <img src="titulo_novo.png">
+    <h1>Simulador Financeiro</h1>
+    <h3>Captação de Dados de Temperatura e Umidade</h3>
+    Selecione o tipo de plano: <br>
+    <select name="" id="plano" onchange="planos()">
+        <option value="">-selecione a sua opção-</option>
+        <option value="150">Plano com 5 sensores</option>
+        <option value="275">Plano com 10 sensores</option>
+        <option value="425">Plano com 15 sensores</option>
+        <option value="550">Plano com 20 sensores</option>
+        <option value="Ligue 4002-8922 para mais informações">Mais de 20 sensores</option>
+    </select>
+    <p></p>
+    Selecione dia da semana da instalaçao: <br>
+    <select name="" id="dia" onchange="agendar()">
+        <option value="">-selecione a sua opção-</option>
+        <option value="150">Segunda-feira</option>
+        <option value="150">Terça-feira</option>
+        <option value="150">Quarta-feira</option>
+        <option value="150">Quinta-feira</option>
+        <option value="200">Sexta-feira</option>
+        <option value="Para negociar feriados ligue 4002-8922">Finais de semanas/feriados</option>
+    </select>
+        <br>
+        Data de Agendamento:<br><br>
+        EX: 15/01/2020 <br>
+        <input type="text" id="data"><br>
+        <button onclick="verificar()">Verificar se agendamento é disponível</button><br>
+        <div id="mensagem" style="background-color: slateblue; width: 500px;"></div>
+        <p></p>
+        <div id="mensagem2" style="background-color: slateblue; width: 500px;"></div>
+        <p></p>
+        <div id="mensagem3" style="background-color: slateblue; width: 500px;"></div>
+        <p></p>
+        <div id="mensagem4" style="background-color: slateblue; width: 500px;"></div>
+
+
+    </center>
+    <script>
+        function planos(){
+            mensagem.innerHTML = 'Plano selecionado custa: R$';
+            mensagem.innerHTML += plano.value;
+        }
+        function agendar(){
+            mensagem2.innerHTML = 'Neste dia a instalação custa: R$';
+            mensagem2.innerHTML += dia.value;
+            var total = Number(plano.value) + Number(dia.value)
+            mensagem2.innerHTML += `<p></p>Sendo seu total R$${total}`
+        }
+        function verificar(){
+            mensagem3.innerHTML = `<br><br>O seu plano foi agendado no dia <u>${data.value}</u><br>`;
+            mensagem4.innerHTML = `
+            Com o o monitoramento de temperatura e umidade isso evitará que outros <br>
+            organismos como: Ácaros, fungos parasitas, insetos e bactérias se proliferem <br>
+            evitando o prejuízo de perder toda a produção.`;
+        }
+    </script>
+</body>
+</html>

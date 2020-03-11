@@ -33,13 +33,76 @@ alter table Clientes rename column Nome to Empresa;
 create table Espec_Temp_Umi(
 	ID int primary key,
     Cogumelo varchar(40),
-    Temperatura int,
-    Umidade int,
+    Temperatura varchar (20),
+    Umidade varchar(20),
     Tempo_de_Cultivo varchar (20)
 );
+alter table Espec_Temp_Umi auto_increment=1;
 
+drop table Espec_Temp_Umi;
 insert into Espec_Temp_Umi values 
-	(1, 'Shimeji', 10),
-    (2, 'Shiitake'),
-    (3, 'Cogumelo do Sol');
+	(1, 'Shimeji', '10 - 20 graus', '50%', '3 semanas'),
+    (2, 'Shiitake', '10 - 20 graus','50%', '3 semanas' ),
+    (3, 'Cogumelo do Sol',  '10 - 20 graus', '50%', '3 semanas');
     
+select*from Espec_Temp_Umi;
+
+-- ================================================================================================
+
+create table monitoramento_Shimeji(
+	ID int primary key auto_increment,
+    Fase int,
+    Horario varchar (5),
+    Temperatura varchar (10),
+    Umidade varchar (3)
+    )auto_increment=1;
+
+insert monitoramento_Shimeji values
+	(null, 1, '22h06', '22 graus', '49%');
+    
+insert monitoramento_shimeji values
+	(null, 2, '22h06', '25 graus', '49%'),
+    (null, 3, '22h06', '23 graus', '49%'),
+    (null, 1, '22h10', '25 graus', '49%'),
+    (null, 2, '22h10', '24 graus', '49%'),
+    (null, 3, '22h10', '24 graus', '49%');
+    
+select*from monitoramento_Shimeji;
+
+create table monitoramento_Shiitake(
+	ID int primary key auto_increment,
+    Fase int,
+    Horario varchar (5),
+    Temperatura varchar (10),
+    Umidade varchar (3)
+    ) auto_increment=1;
+
+insert monitoramento_shiitake values
+    (null, 1, '22h06', '22 graus', '49%'),
+	(null, 2, '22h06', '25 graus', '49%'),
+    (null, 3, '22h06', '23 graus', '49%'),
+    (null, 1, '22h10', '25 graus', '49%'),
+    (null, 2, '22h10', '24 graus', '49%'),
+    (null, 3, '22h10', '24 graus', '49%');
+
+    select*from monitoramento_shiitake;
+    
+    delete from monitoramento_shiitake where id = 7;
+    
+create table monitoramento_Cogumelo_d0_Sol(
+	ID int primary key auto_increment,
+    Fase int,
+    Horário varchar (5),
+    Temperatura varchar (10),
+    Umidade varchar (3)
+    )auto_increment=1;
+
+insert into monitoramento_cogumelo_d0_sol values    
+    (null, 1, '22h06', '22 graus', '49%'),
+	(null, 2, '22h06', '25 graus', '49%'),
+    (null, 3, '22h06', '23 graus', '49%'),
+    (null, 1, '22h10', '25 graus', '49%'),
+    (null, 2, '22h10', '24 graus', '49%'),
+    (null, 3, '22h10', '24 graus', '49%');
+
+select*from monitoramento_cogumelo_d0_sol;
